@@ -22,15 +22,17 @@ public class MoveTank : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         // Quaternion rotation = _rb.rotation;
         // rotation.eulerAngles += Vector3.up * _inputTurn * _turnSpeed * Time.deltaTime;
         // _rb.MoveRotation(rotation);
         //
-        _rb.MoveRotation( _rb.rotation * Quaternion.Euler(Vector3.up * _inputTurn * _turnSpeed * Time.deltaTime));
         
+        //transform.Translate(transform.forward * _inputForward * _moveIntensity);
+        
+        _rb.MoveRotation( _rb.rotation * Quaternion.Euler(Vector3.up * _inputTurn * _turnSpeed * Time.deltaTime));
         _rb.AddForce(_rb.transform.forward * _inputForward * _moveIntensity);
         
     }
