@@ -2,15 +2,23 @@
     background-color: rgb(70, 80, 105);
     -unity-font-definition: url('project://database/Assets/Fonts/Josefin_Sans/static/JosefinSans-Bold.ttf?fileID=12800000&guid=9c7f8e2bc9f16844c8437cb6a3363a2d&type=3#JosefinSans-Bold');
     color: rgb(255, 255, 255);
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     transition-duration: 0.1s;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    margin-top: 22px;
+    margin-right: 22px;
+    margin-bottom: 22px;
+    margin-left: 22px;
 }
 
 .button:hover {

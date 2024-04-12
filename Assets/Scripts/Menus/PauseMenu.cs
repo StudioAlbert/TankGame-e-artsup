@@ -10,25 +10,32 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField] private UIDocument _pauseMenu;
-    
+    [SerializeField] private UIDocument _HUD;
+
+    private bool _isPaused = false;
+
     private void Start()
     {
-        VisualElement _root = _pauseMenu.rootVisualElement;
-        
-        Button buttonResume = _root.Q<Button>("ResumeBtn");
-        if(buttonResume is not null)
+        VisualElement root;
+        Button buttonResume;
+        Button buttonMainMenu;
+
+        root = _pauseMenu.rootVisualElement;
+
+        buttonResume = root.Q<Button>("ResumeBtn");
+        if (buttonResume is not null)
         {
             buttonResume.RegisterCallback<ClickEvent>(OnClickedResume);
         }
-        
-        Button buttonMainMenu = _root.Q<Button>("MainMenuBtn");
-        if(buttonMainMenu is not null)
+
+        buttonMainMenu = root.Q<Button>("MainMenuBtn");
+        if (buttonMainMenu is not null)
         {
             buttonMainMenu.RegisterCallback<ClickEvent>(OnClickedMain);
         }
-        
+
         ExitPause();
-        
+
     }
 
     private void OnClickedMain(ClickEvent evt)
@@ -46,10 +53,10 @@ public class PauseMenu : MonoBehaviour
 
     private void OnPause(InputValue value)
     {
-        
+
         Debug.Log("Pause Input");
-        
-        if (_pauseMenu.gameObject.activeSelf)
+
+        if (_isPaused)
         {
             // Plus la pause
             ExitPause();
@@ -63,14 +70,20 @@ public class PauseMenu : MonoBehaviour
 
     private void EnterPause()
     {
-        _pauseMenu.gameObject.SetActive(true);
+        _pauseMenu.rootVisualElement.style.display = DisplayStyle.Flex;
+        _HUD.rootVisualElement.style.display = DisplayStyle.None;
         Time.timeScale = 0F;
+
+        _isPaused = true;
     }
 
     private void ExitPause()
     {
-        _pauseMenu.gameObject.SetActive(false);
+        _pauseMenu.rootVisualElement.style.display = DisplayStyle.None;
+        _HUD.rootVisualElement.style.display = DisplayStyle.Flex;
         Time.timeScale = 1F;
+
+        _isPaused = false;
     }
 
 }
